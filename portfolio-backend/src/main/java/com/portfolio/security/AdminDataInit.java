@@ -2,12 +2,14 @@ package com.portfolio.security;
 
 
 import com.portfolio.entity.User;
+import com.portfolio.entity.userDataEntity.WorkExperience;
 import com.portfolio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Locale;
 
 
 @Component
@@ -25,9 +27,14 @@ public class AdminDataInit {
         }
         admin = new User();
         admin.setAdmin(true);
-        admin.setUsername("admin");
-        admin.setEmail("admin@admin.com");
-        admin.setPassword(bCryptPasswordEncoder.encode("123456"));
+        admin.setUsername("firoze");
+        admin.setEmail("firoze.hossain01@yahoo.com");
+        admin.setAddress("Mirpur");
+        admin.setCountry("Bangladesh");
+        admin.setFirstName("Md. Firoze");
+        admin.setLastName("Hossain");
+        admin.setHeadline("Junior Software Engineer");
+        admin.setPassword(bCryptPasswordEncoder.encode("firoze28"));
         userRepository.save(admin);
     }
 
