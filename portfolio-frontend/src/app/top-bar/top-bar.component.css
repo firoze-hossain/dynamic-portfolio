@@ -1,0 +1,21 @@
+* {
+    font-family: Source Sans Pro,Calibri;
+}
+.dropdown-menu {
+    background-color: var(--primary-color);
+    border: 0ch;
+}
+.navbar {
+    background-color: var(--primary-color);
+}
+.nav-item .nav-link {
+    font-size: 16px;
+}
+.dropdown-item {
+    color:white;
+    font-size:16px;
+}
+.dropdown-item:hover {
+    color: var(--primary-color);
+    background-color: white;
+}

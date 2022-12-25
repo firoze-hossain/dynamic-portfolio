@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<app-top-bar style="position: fixed; width: 100%; z-index: 10;">
+</app-top-bar>
+
+<nz-layout style="padding-top: 55px;min-height: 100%;">
+  <nz-sider style="position: fixed; height: 100%;" class="menu-sidebar" nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null" nzCollapsible="true" (nzCollapsedChange)="changeWidth()">
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzMatchRouter  *ngIf="!admin_account">
+        <i nz-icon nzType="idcard" nzTheme="outline"></i>
+        <span>My CV</span>
+        <a routerLink="/cv"></a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="user" nzTheme="outline"></i>
+        <span>My Account</span>
+        <a routerLink="/my_account"></a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="safety-certificate" nzTheme="outline"></i>
+        <span>Security</span>
+        <a routerLink="/security"></a>
+      </li>
+      <li nz-menu-item nzMatchRouter *ngIf="admin_account">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span>Manage Users</span>
+        <a routerLink="/manage_users"></a>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout [style]=width>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>
+      <app-footer></app-footer>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

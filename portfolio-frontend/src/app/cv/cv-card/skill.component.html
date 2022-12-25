@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<div class="card-body" style="background-color: white">
+  <button class="btn add-btn a-right" (click)="addForm()" type="button">
+    <i class="fa fa-plus" aria-hidden="true"></i></button>
+  <h2>{{title}}</h2>
+  <hr />
+  <ul>
+    <div *ngFor="let item of data" class="cover">
+      <div class="row">
+        <div class="col-8">
+          <h6>
+
+            <li *ngIf="item.skillName">{{item.skillName}}</li>
+          </h6>
+        </div>
+        <div class="col-4">
+          <button 
+            nz-popconfirm
+            nzPopconfirmTitle="Are you sure to delete this item?"
+            nzOkText="ok"
+            nzCancelText="cancel"
+            (nzOnConfirm)="deleteForm(item.id)"
+            class="btn add-btn a-right" type="button" style="color: red;">
+            <i class="fa fa-trash-alt" aria-hidden="true"></i></button>
+          <button class="btn add-btn a-right" (click)="editForm(item)" type="button">
+            <i class="fa fa-pencil-alt" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>
+

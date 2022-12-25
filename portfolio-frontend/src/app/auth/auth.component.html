@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<app-top-bar></app-top-bar>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-xs-12">
+      <p></p>
+      <p style="font-size:36px">{{ title }}</p>
+      <p><a [routerLink]="['/login']" *ngIf="reqType == 'register'">Already have an account?</a>
+        <a [routerLink]="['/register']" *ngIf="reqType == 'login'">Need an account?</a>
+      </p>
+      <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm.value)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username">
+          <div
+            *ngIf="mainForm.get('username').invalid && (mainForm.get('username').dirty || mainForm.get('username').touched)">
+            <div class="errprompt" *ngIf="mainForm.get('username').errors.required">
+              Username is required.
+            </div>
+            <div class="errprompt" *ngIf="mainForm.get('username').errors.minlength">
+              Username must be at least 3 characters.
+            </div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="reqType == 'register'">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email">
+          <div *ngIf="mainForm.get('email').invalid && (mainForm.get('email').dirty || mainForm.get('email').touched)">
+            <div class="errprompt" *ngIf="mainForm.get('email').errors">
+              Invaild email format.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <div
+            *ngIf="mainForm.get('password').invalid && (mainForm.get('password').dirty || mainForm.get('password').touched)">
+            <div class="errprompt" *ngIf="mainForm.get('password').errors.required">
+              Password is required.
+            </div>
+            <div class="errprompt" *ngIf="mainForm.get('password').errors.minlength">
+              Password must be at least 6 characters.
+            </div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="reqType == 'register'">
+          <label for="confirmPass">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPass" formControlName="confirmPass">
+          <div
+            *ngIf="mainForm.get('confirmPass').invalid && (mainForm.get('confirmPass').dirty || mainForm.get('confirmPass').touched)">
+            <div class="errprompt" *ngIf="mainForm.get('confirmPass').errors">
+              Two passwords didn't match.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="mainForm.invalid">{{title}}</button>
+      </form>
+    </div>
+  </div>
+</div>
